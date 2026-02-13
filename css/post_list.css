@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  padding: 40px;
+}
+
+.table-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f0f2f5;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  color: white;
+}
+
+.edit {
+  background: #4caf50;
+}
+.preview {
+  background: #2196f3;
+}
+.delete {
+  background: #f44336;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+}
+.add-btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 10px 14px;
+  background: #673ab7;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}

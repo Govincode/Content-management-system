@@ -1,19 +1,23 @@
 <?php
 
 include_once "includes/db.php";
+include_once "functions.php";
 //publish post 
         if(isset($_POST['publish'])){
         $content = $_POST['content'];
-
+        $pId = $_GET['pId'];
         $stmt = $conn->prepare("INSERT INTO postcontent(pContent,pid) VALUES (?,?)");
-        $pid = 1;
-        $stmt->bind_param("si",$content,$pid);
+    
+        $stmt->bind_param("si",$content,$pId);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){
-            echo "uploaded into database";
+            
+            updatePostStatus($conn);
+            header("Location:statusChecker.php?pId=$pId");
+
         }else{
-            echo "failed upload into database";
+            
         }
 
         

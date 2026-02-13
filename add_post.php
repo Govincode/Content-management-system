@@ -17,9 +17,10 @@ if(isset($_POST['Add'])){
     }else{
             $stmt->bind_param("s",$postName);
             $stmt->execute();
-
+            
             if($stmt->affected_rows>0){
-                header('Location: edit_post.php');
+               
+                header('Location: post_list.php');
                 exit();
             }
     }

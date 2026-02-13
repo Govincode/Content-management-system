@@ -2,13 +2,13 @@
 include "includes/db.php";
 if(isset($_GET['pId'])){
   $postId = $_GET['pId'];
-  $stmt = $conn->prepare("SELECT * from post WHERE pId = ?;");
-  $stmt->bind_param("i",$postId);
+  $stmt = $conn->prepare("SELECT * from postcontent NATURAL JOIN post WHERE pId = $postId;");
+
   $stmt->execute();
   $result = $stmt->get_result();
   $row = $result->fetch_assoc();
   $postTitle = $row['pName'];
-  
+  $postContent = $row['pContent'];
 
 
 }
@@ -119,19 +119,21 @@ body {
 
 <div class="page-header">Post Editor</div>
 
-<form action="publish_post.php?pId=<?php echo $postId ?>" method="POST" id="content-form">
+<form action="update_post_content.php?pId=<?php echo $postId ?>" method="POST" id="content-form">
 
   <div class="content-area">
     <input type="text" name="title" placeholder="Post title..." class="title-input" value="<?php echo $postTitle ?>">
 
     <textarea name="content" id="content_area">
-    
+      <?php
+        echo $postContent;
+      ?>
 
     </textarea>
   </div>
 
   <div class="side-bar">
-    <input type="submit" value="publish Post" name="publish" class="publish-btn">
+    <input type="submit" value="Update Post" name="update" class="publish-btn">
   </div>
 
 </form>
